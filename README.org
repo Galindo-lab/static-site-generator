@@ -1,0 +1,25 @@
+
+#+title: Generador de sitios estáticos con markdown
+
+* Motivación
+La organización con la se esta trabajando requiere un sitio web, al no contar con servidores propios se opto por una pagina estática, para mantener la consistencia entre contenido se opto por usar un formato intermedio para los aportes 'markdown' así cualquiera puede aportar independientemente de sus conocimientos técnicos. 
+
+* Requerimientos
+- markdown como formato principal :: md es mas sencillo que html, fácilmente cualquier persona puede aportar.
+
+- Sencillez de uso :: mantener la complejidad para operar el programa al mínimo.
+
+- Mínima curva de aprendizaje :: el usuario no debe tomar mas de unos minutos para entender como usar el sistema.
+
+* Filosofía 
+- El código debe ser lo más sencillo posible para que cualquiera pueda aportar.
+
+- Mantener las dependencias al mínimo.
+
+- Todo el programa debe estar en un solo archivo.
+
+- documentar el código.
+
+
+
+

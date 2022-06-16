@@ -3,14 +3,11 @@ import markdown
 import os
 
 input_folder = "./content"
-output_folder = "./output"
+output_folder = "./site"
 
 # Aqui va la esstructura del html, el contenido lo genera mdt2html
 templates_folder = "./templates"
 
-#
-styles_folder = "./styles"
-scripts_folder = "./script"
 
 
 def file_names() -> list:
