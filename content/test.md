@@ -1,4 +1,4 @@
-# Markdown: Syntax
+# Markdown: Syntax test
 
 *   [Overview](#overview)
     *   [Philosophy](#philosophy)
