@@ -2,12 +2,19 @@ import string
 import markdown
 import os
 
+
+templates_folder = "./templates"
 input_folder = "./content"
 output_folder = "./site"
+sections = [
+    "test1", "test2", "test3"
+]
 
-# Aqui va la esstructura del html, el contenido lo genera mdt2html
-templates_folder = "./templates"
 
+def create_sections():
+    for section in sections:
+        os.makedirs(input_folder + "/" + section, exist_ok=True)
+        os.makedirs(output_folder + "/" + section, exist_ok=True)
 
 
 def file_names() -> list:
