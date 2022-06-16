@@ -1,7 +1,6 @@
 
-#+title: Generador de sitios estáticos con markdown
+#+title: Generador De Sitios Estáticos Con Markdown
 
-* Motivación
 La organización con la se esta trabajando requiere un sitio web, al no contar con servidores propios se opto por una pagina estática, para mantener la consistencia entre contenido se opto por usar un formato intermedio para los aportes 'markdown' así cualquiera puede aportar independientemente de sus conocimientos técnicos. 
 
 * Requerimientos
@@ -18,7 +17,7 @@ La organización con la se esta trabajando requiere un sitio web, al no contar c
 
 - Todo el programa debe estar en un solo archivo.
 
-- documentar el código.
+- Documentar el código.
 
 
 
