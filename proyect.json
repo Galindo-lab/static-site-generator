@@ -1,0 +1,21 @@
+
+// check el tipo de extencion que tiene el documento
+// sí es html, importarlo directamente
+// si es md, convertirlo a html e importarlo
+// si es py, ejecutarlo y generar el html de la salida
+
+
+{
+    "proyect-name":  "hola",
+    "folder-output": "",
+
+    "root": [
+        "index.html"
+    ],
+    
+    "articles": [
+        
+    ],
+
+    
+}
