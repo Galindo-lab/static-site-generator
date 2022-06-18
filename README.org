@@ -3,21 +3,100 @@
 
 La organización con la se esta trabajando requiere un sitio web, al no contar con servidores propios se opto por una pagina estática, para mantener la consistencia entre contenido se opto por usar un formato intermedio para los aportes 'markdown' así cualquiera puede aportar independientemente de sus conocimientos técnicos. 
 
-* Requerimientos
+** Requerimientos
 - markdown como formato principal :: md es mas sencillo que html, fácilmente cualquier persona puede aportar.
-
 - Sencillez de uso :: mantener la complejidad para operar el programa al mínimo.
-
 - Mínima curva de aprendizaje :: el usuario no debe tomar mas de unos minutos para entender como usar el sistema.
 
-* Filosofía 
+** Filosofía 
 - El código debe ser lo más sencillo posible para que cualquiera pueda aportar.
-
-- Mantener las dependencias al mínimo.
-
+- Mantener las dependencias externas al mínimo.
 - Todo el programa debe estar en un solo archivo.
-
 - Documentar el código.
+- Limitar lo máximo posible los casos especiales.
+- Evitar duplicar archivos.
 
+* Usage
 
+** Configuraciones
+los directorios y las secciones de la pagina se encuentran en el archivo "proyect", aquí se pueden modificar los parámetros del programa:
 
+#+BEGIN_SRC javascript
+  // proyect.json
+
+  {
+      "proyectName": "Test site",       // Nombre del proyecto
+      "index": "index.md",
+      "notFound": "notfound.md",
+
+      "inputFolder": "./content",       // Directorio de contenido
+      "outputFolder": "./site",         // Directorio de salida
+      "templatesFolder": "./templates", // Directorio de plantillas
+
+      "defaultTemplate": "root.html"    // Plantilla default
+      "sections"  [                     // Secciones de la pagina 
+          "test1",
+          "test2", 
+          "test3"
+      ],
+  }
+#+END_SRC
+
+** Secciones
+*** ¿Qué es una Sección?
+En pocas palabras es un directorio que contiene artículos, se tienen que especificar dentro de "proyect.json" para que el convertidor los tome en cuenta.
+
+*** ¿Cómo crear nuevas secciones?
+En el apartado "sections" en el archivo "proyect.json" se pueden añadir nombres a la lista para crear nuevas secciones, las secciones si el directorio no existe se crean. 
+
+*** Plantillas 
+Cada sección puede tener solo una plantilla la cual debe tener el mismo nombre que la sección, si no existe se usara la plantilla default.
+
+** Artículos
+*** ¿Qué es un Artículo?
+Es un archivo [[https://es.wikipedia.org/wiki/Markdown][Markdown]] que se encuentra en una seccion, estos se convierten directametne a html.
+
+*** Formato de articulo
+#+BEGIN_SRC 
+[fecha]-[nombre del articulo]-[autor].md
+   |
+   +----> YYYYMMDD es todo junto, sin separaciones y con ceros.
+
+Ejemplo:
+  20220608-Lorem lispum-Joe Doe.md
+#+END_SRC
+
+*** Articulo no publicado
+Si queremos guardar un articulo sin publicarlo simplemente agregamos un '-' al inicio del nombre:
+
+#+BEGIN_SRC 
+articulo publicado:
+  20220608-Lorem lispum-Joe Doe.md
+
+artculo NO publicado:
+  -20220608-Lorem lispum-Joe Doe.md
+#+END_SRC
+
+*** ¿Puedo poner imagenes y videos en mi Articulo?
+Si pero de manera externa, el generador no tiene ningun tipo de soporte para gestionar contenido multimedia de ningun tipo, algunos sitios para hostear contenido multimedia son:
+
+**** para Videos
+- [[https://www.youtube.com][Youtube]]
+- [[https://odysee.com][Odysee]]
+- [[https://vimeo.com][Vimeo]]
+- [[https://www.dailymotion.com/mx][Dailymotion]]
+
+**** para Imagenes
+- [[https://www.pinterest.com.mx][Pinterest]]
+- [[https://es.imgbb.com][Imgbb]]
+
+** TODO Plantillas
+
+** Directorio Site
+En este directorio se encuentran todo nuestro contenido en forma de html, los recursos y todo lo que componga nuestro sitio en una forma que nuestro navegador pueda entender.
+
+Este directorio es parte del proyecto y *NO* debe ser eliminado.
+
+* Recomendaciones
+- Mantener algún sistema de control de versiones como git.
+- Mantener copias del sistema de manera remota. (github, drive)
