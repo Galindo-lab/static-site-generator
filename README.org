@@ -3,18 +3,15 @@
 
 La organización con la se esta trabajando requiere un sitio web, al no contar con servidores propios se opto por una pagina estática, para mantener la consistencia entre contenido se opto por usar un formato intermedio para los aportes 'markdown' así cualquiera puede aportar independientemente de sus conocimientos técnicos. 
 
-** Requerimientos
 - markdown como formato principal :: md es mas sencillo que html, fácilmente cualquier persona puede aportar.
 - Sencillez de uso :: mantener la complejidad para operar el programa al mínimo.
 - Mínima curva de aprendizaje :: el usuario no debe tomar mas de unos minutos para entender como usar el sistema.
-
-** Filosofía 
-- El código debe ser lo más sencillo posible para que cualquiera pueda aportar.
-- Mantener las dependencias externas al mínimo.
-- Todo el programa debe estar en un solo archivo.
-- Documentar el código.
-- Limitar lo máximo posible los casos especiales.
-- Evitar duplicar archivos.
+- Evitar duplicar archivos :: Mantiene el peso del archivo lo menor posible.
+- Facilidad de Estudio :: El código debe ser lo más sencillo posible para que cualquiera pueda aportar.
+- Mantener las dependencias externas al mínimo :: menos cosas que requiere el usuario para instalar.
+- Todo el programa debe estar en un solo archivo :: para que sea fácil de mover.
+- Documentar el código :: Documentar es gratis.
+- Limitar los casos especiales :: Esto ayuda a mantener el código sencillo, los casos especiales se hacen en 'site'.
 
 * Usage
 
@@ -80,17 +77,48 @@ artculo NO publicado:
 *** ¿Puedo poner imagenes y videos en mi Articulo?
 Si pero de manera externa, el generador no tiene ningun tipo de soporte para gestionar contenido multimedia de ningun tipo, algunos sitios para hostear contenido multimedia son:
 
-**** para Videos
+**** Videos
 - [[https://www.youtube.com][Youtube]]
 - [[https://odysee.com][Odysee]]
 - [[https://vimeo.com][Vimeo]]
 - [[https://www.dailymotion.com/mx][Dailymotion]]
 
-**** para Imagenes
+**** Imagenes
 - [[https://www.pinterest.com.mx][Pinterest]]
+- [[https://drive.google.com][Google drive]]
 - [[https://es.imgbb.com][Imgbb]]
 
-** TODO Plantillas
+Otra alternativa no recomendada pero posible, es crear un folder en 'site' dedicado al contenido multimedia y gestionarlo manualmente, es un más molesto de administrar pero sí eres la única persona editando la pagina y no quieres usar un servicio externo es una buena opción.
+
+** Plantillas
+Las plantillas son simplemente archivos html, pero tienen tags que permiten insertar información:
+
+| Tag        | Función                     |
+|------------+-----------------------------|
+| @{title}   | Titulo del articulo         |
+| @{date}    | Fecha en formato YYYY/MM/DD |
+| @{author}  | Nombre del autor            |
+| @{content} | Contenido del artículo      |
+
+#+BEGIN_SRC html 
+  <!-- Ejemplo de una plantilla -->
+
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8"/>
+      <title>${title}</title>
+    </head>
+    <body>
+      <content>
+        ${content}
+      </content>
+
+      <footer>
+      Publicado por @{autor} el @{date}.
+      </footer>
+    </body>
+  </html>
+#+END_SRC
 
 ** Directorio Site
 En este directorio se encuentran todo nuestro contenido en forma de html, los recursos y todo lo que componga nuestro sitio en una forma que nuestro navegador pueda entender.
@@ -99,4 +127,4 @@ Este directorio es parte del proyecto y *NO* debe ser eliminado.
 
 * Recomendaciones
 - Mantener algún sistema de control de versiones como git.
-- Mantener copias del sistema de manera remota. (github, drive)
+- Mantener copias del sistema de manera remota (github, drive).
