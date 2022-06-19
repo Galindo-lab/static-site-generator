@@ -1,21 +1,16 @@
+  {
+      "proyectName": "Test site",    
+      "index": "index.md",
+      "notFound": "notfound.md",
 
-// check el tipo de extencion que tiene el documento
-// sí es html, importarlo directamente
-// si es md, convertirlo a html e importarlo
-// si es py, ejecutarlo y generar el html de la salida
+      "inputFolder": "./content",    
+      "outputFolder": "./site",        
+      "templatesFolder": "./templates", 
 
-
-{
-    "proyect-name":  "hola",
-    "folder-output": "",
-
-    "root": [
-        "index.html"
-    ],
-    
-    "articles": [
-        
-    ],
-
-    
-}
+      "defaultTemplate": "root.html"   ,
+      "sections": [                    
+          "test1",
+          "test2", 
+          "test3"
+      ]
+  }
