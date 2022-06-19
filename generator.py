@@ -17,8 +17,7 @@ sections = data["sections"]  # secciones
 def generate():
     input_dirs = input_path_list()  # Directorios de entrada
     output_dirs = output_path_list()  # Directorios de salida
-    # input_files = input_files_paths()  #
-    # output_files = output_files_paths()  #
+    
 
     # crea los directorios de entrada si no existen
     # cada direcotrio correponde a una seccion
@@ -33,8 +32,8 @@ def generate():
         # usar la plantilla default si no hay plantilla para
         # la seccion 
         template_path = template(section) if template_exist(
-            section) else default_templat
-        
+            section) else default_template
+
 
 def input_path_list() -> list:
     """Retorna la ruta de entrada para cada seccion del proyecto"""
@@ -51,13 +50,11 @@ def make_dir(directory: list):
     os.makedirs(directory, exist_ok=True)
 
 
-def template(section: str) -> str:
-    return f"{templates_dir}/{section}.html"
 
 
-def template_exist(section: str) -> bool:
-    return os.path.exists(template(section))
 
+
+    
 
 def remove_suffix(file_name: str) -> str:
     """Elimina el suffijo del archivo"""
@@ -75,3 +72,23 @@ def file_names(directory: str) -> list:
     nombres sin extensiones.
     """
     return list(map(remove_suffix, os.listdir(directory)))
+
+
+
+
+
+
+
+
+def template(section: str) -> str:
+    return f"{templates_dir}/{section}.html"
+
+
+def template_exist(section: str) -> bool:
+    return os.path.exists(template(section))
+
+
+
+def md2html(md_text: str):
+    """Convertir archivo .md a .html"""
+    return markdown.markdown(md_text)
