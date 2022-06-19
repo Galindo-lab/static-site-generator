@@ -1,16 +1,13 @@
-  {
-      "proyectName": "Test site",    
-      "index": "index.md",
-      "notFound": "notfound.md",
+{
+    "proyectName": "Test site",    
+    "inputFolder": "./content",    
+    "outputFolder": "./site",        
+    "templatesFolder": "./templates", 
 
-      "inputFolder": "./content",    
-      "outputFolder": "./site",        
-      "templatesFolder": "./templates", 
-
-      "defaultTemplate": "root.html"   ,
-      "sections": [                    
-          "test1",
-          "test2", 
-          "test3"
-      ]
-  }
+    "defaultTemplate": "root.html"   ,
+    "sections": [                    
+        "test1",
+        "test2", 
+        "test3"
+    ]
+}
