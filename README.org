@@ -114,7 +114,7 @@ Las plantillas son simplemente archivos html, pero tienen tags que permiten inse
       </content>
 
       <footer>
-      Publicado por @{autor} el @{date}.
+        Publicado por @{autor} el @{date}.
       </footer>
     </body>
   </html>
