@@ -3,11 +3,13 @@
     "inputFolder": "./content",    
     "outputFolder": "./site",        
     "templatesFolder": "./templates", 
-
-    "defaultTemplate": "root.html"   ,
-    "sections": [                    
+    "defaultTemplate": "root.html",
+    
+    "published-sections": [                    
         "test1",
-        "test2", 
+        "test2"
+    ],
+    "unpublished-sections": [
         "test3"
     ]
 }
