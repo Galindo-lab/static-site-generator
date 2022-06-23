@@ -95,10 +95,10 @@ Las plantillas son simplemente archivos html, pero tienen tags que permiten inse
 
 | Tag        | Función                     |
 |------------+-----------------------------|
-| @{title}   | Titulo del articulo         |
-| @{date}    | Fecha en formato YYYY/MM/DD |
-| @{author}  | Nombre del autor            |
-| @{content} | Contenido del artículo      |
+| ${title}   | Titulo del articulo         |
+| ${date}    | Fecha en formato YYYY/MM/DD |
+| ${author}  | Nombre del autor            |
+| ${content} | Contenido del artículo      |
 
 #+BEGIN_SRC html 
   <!-- Ejemplo de una plantilla -->
