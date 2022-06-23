@@ -49,12 +49,25 @@ class Proyect():
 
             # articulos en el directorio origen (secciones)
             for article in origin_dir.iterdir():
-                if not is_public(article.name): continue
+                if not is_public(article.name):
+                    self.unpublish(section, article)
+                    continue
+                else:
+                    self.publish(section, article)
 
-                self.export_md2html(
-                    article,
-                    Path(self.destination, section, article.name))
+
+    def publish(self, section: str, article_path: Path ):
+        destiny = Path(self.destination, section,article_path.name)
+        self.export_md2html(article_path, destiny)
+        
                 
+    def unpublish(self,section: str,article_path: Path):
+        # eliminar el primer '-'
+        # https://stackoverflow.com/a/4945578
+        name = article_path.name.lstrip("-")
+        afile = Path(self.destination, section, name).with_suffix(".html")
+        if afile.exists(): afile.unlink()
+        
 
     def export_md2html(self, origin: Path, destiny: Path):
         destination = destiny.with_suffix(".html")
