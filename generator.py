@@ -34,12 +34,17 @@ def publish_file(input_file: Path) -> Path:
 
 
 def load_template(name: str) -> Template:
-    # file_name = Path(name).with_suffix(".html")
+    """
+    Carga las plantillas 
+    """
     template = template_directory / f"{name}.html"
     return Template(template.read_text())
     
 
 def create_dirs():
+    """
+    Crea los directorios necesario para crear el export 
+    """
     for diir in list_md_files(base_directory):
         folder = publish_file(diir).parent
         folder.mkdir(exist_ok=True)
