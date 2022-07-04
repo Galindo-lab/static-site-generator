@@ -16,12 +16,16 @@ template_directory = Path("templates/")
 
 def list_md_files(directory: Path) -> list:
     """
-    Iterar el directorio base para extraer los archivos '.md'
+    Iterar el directorio base para extraer los archivos '.md'.
     """
     return [diir for diir in base_directory.glob("**/*.md")]
 
 
 def publish_file(input_file: Path) -> Path:
+    """
+    Convierte un archivo de el directorio base a el directorio 
+    de publicación.
+    """
     # eliminar el directorio base
     foo = input_file.relative_to(base_directory)
     # archivo equivalente en publishing_directory
@@ -75,12 +79,15 @@ def export_file(input_file: Path):
     
 
 def export_files():
+    """
+    Exportar los archivos.
+    """
     for filee in list_md_files(base_directory):
         export_file(filee)
         
 
 
-print(" TEST ")
+print(" ")
 create_dirs()
 export_files()
-print("")
+print(" ")
