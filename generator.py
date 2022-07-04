@@ -2,16 +2,18 @@
 import string
 import json
 import shutil
-import pdb
+import markdown
 
 from string import Template
 from pathlib import Path
 
-import markdown
 
-base_directory = Path("content/")
-publishing_directory = Path("site/")
-template_directory = Path("templates/")
+f = open('proyect.json',)
+proyect = json.load(f)
+
+base_directory = Path(proyect["base-directory"])
+publishing_directory = Path(proyect["publishing-directory"])
+template_directory = Path(proyect["templates-directory"])
 
 
 def list_md_files(directory: Path) -> list:
@@ -92,7 +94,7 @@ def export_files():
         
 
 
-print(" ")
+print(" *** Generador *** ")
 create_dirs()
 export_files()
-print(" ")
+print(" ****** End ****** ")

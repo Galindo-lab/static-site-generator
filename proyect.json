@@ -1,15 +1,6 @@
 {
-    "proyectName": "Test site",    
-    "inputFolder": "./content",    
-    "outputFolder": "./site",        
-    "templatesFolder": "./templates", 
-    "defaultTemplate": "root.html",
-    
-    "published-sections": [
-        "test1",
-        "test2"
-    ],
-    "unpublished-sections": [
-        "test3"
-    ]
+    "name" : "site name",
+    "base-directory" : "./content/",
+    "publishing-directory" : "./site/",
+    "templates-directory" : "./templates/"
 }
