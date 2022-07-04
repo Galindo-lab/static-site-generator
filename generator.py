@@ -1,4 +1,4 @@
-# import os
+
 import string
 import json
 import shutil
@@ -11,7 +11,7 @@ import markdown
 
 base_directory = Path("content/")
 publishing_directory = Path("site/")
-md = markdown.Markdown(extensions=['meta'])
+template_directory = Path("templates/")
 
 
 def list_md_files(directory: Path) -> list:
@@ -21,49 +21,66 @@ def list_md_files(directory: Path) -> list:
     return [diir for diir in base_directory.glob("**/*.md")]
 
 
+def publish_file(input_file: Path) -> Path:
+    # eliminar el directorio base
+    foo = input_file.relative_to(base_directory)
+    # archivo equivalente en publishing_directory
+    output_file = publishing_directory / foo.with_suffix(".html")
+    return output_file
+
+
+def load_template(name: str) -> Template:
+    # file_name = Path(name).with_suffix(".html")
+    template = template_directory / f"{name}.html"
+    return Template(template.read_text())
+    
+
 def create_dirs():
-    """
-    Crear los directorios necesarios para los archivos.
-    """
     for diir in list_md_files(base_directory):
-        # eliminar el directorio base
-        foo = diir.relative_to(base_directory)
-        # directorio equivalente en publishing_directory
-        folder = publishing_directory / foo.parent
-        # crear el directorio si no existe
+        folder = publish_file(diir).parent
         folder.mkdir(exist_ok=True)
+        
 
+def extract_meta(input_file: Path) -> dict: 
+    """
+    Extraer los metadatos de el documento.
+    """
+    md = markdown.Markdown(extensions=['meta'])
+    file_path = str(input_file.resolve()) # Path to string
+    md_meta = md.convertFile(file_path).Meta
+    return {k:v[0] for (k,v) in md_meta.items() }
+    
 
-def extract(input_file: Path):
+def export_file(input_file: Path):
     """
-    Extraer el texto en formato markdown y los metadatos de el 
-    documento.
+    Aplicar la plantilla y escribir el archivo '.html'
     """
+    output_file = publish_file(input_file)
+    md = markdown.Markdown(extensions=['meta'])
+
+    meta = extract_meta(input_file)
     md_text = input_file.read_text()
-    md_obj = md.convert(md_text)
+    html_text = md.convert(md_text)
 
-
-def export(input_file: Path, output_file: Path):
-    # ::clown emoji::
-    outp = str(output_file.resolve())
-    inpu = str(input_file.resolve())
-    md_obj = md.convertFile(inpu, output=outp)
-    return md_obj.Meta
-
+    template_name = meta["template"] if "template" in meta else "default"
+    template = load_template(template_name)
+    
+    output_file.write_text(template.substitute({
+        "date" : meta["date"],
+        "title" : meta["title"],
+        "author" : meta["authors"],
+        "content" : html_text
+    }))
+    
+    
 
 def export_files():
     for filee in list_md_files(base_directory):
-        # eliminar el directorio base
-        foo = filee.relative_to(base_directory)
-        # archivo equivalente en publishing_directory
-        output = publishing_directory / foo
+        export_file(filee)
+        
 
 
-print(" ")
+print(" TEST ")
 create_dirs()
-# for txt_path in base_directory.glob("**/*.md"):
-#     print(txt_path)
-
-# md = markdown.Markdown(extensions = ['meta'])
-# html = md.convertFile("./content/test1/-22-22-22.md")
-# meta = md.Meta
+export_files()
+print("")
