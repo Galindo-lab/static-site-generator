@@ -62,6 +62,6 @@ if __name__ == '__main__':
 
     # escribir el archivo de salida
     # -----------------------------
-    f = open(path.with_suffix(".html"), "r+")
+    f = open(path.with_suffix(".html"), "w")
     f.write(output_text)
     f.close()

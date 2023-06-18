@@ -3,41 +3,104 @@
 
 <head>
   <title>{{title}}</title>
-
-  <link rel="stylesheet" href="https://unpkg.com/gutenberg-css" media="print" charset="utf-8">
-  <link rel="stylesheet" href="https://unpkg.com/gutenberg-css/dist/themes/modern.min.css" media="print" charset="utf-8">
-
-  <meta charset="UTF-8">
+  <meta charSset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <script src="https://unpkg.com/pagedjs@0.4.2/dist/paged.polyfill.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@500&display=swap');
+
+    @print {
+      @page {
+        @bottom-left {
+          content: counter(page);
+        }
+      }
+
+      @page cover {
+        margin: 10mm;
+        /* Use a full size page */
+
+        /* Remove page numbers for the cover */
+        @bottom-left {
+          content: none;
+        }
+      }
+    }
+
+
+
+    body {
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      
+    }
+
+
+    /* Cover */
+    .cover {
+      font-family: 'Figtree', sans-serif;
+      page: cover;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cover img {
+      width: 2.5cm;
+    }
+
+    .cover h1 {
+      height: 100%;
+    }
+  </style>
 
 </head>
 
 <body>
 
   <div class="cover">
+    <div style="line-height: 1.5;">
+      <img src="escudo-uabc-2022-1-tinta-pos.png">
+      <br>
+      <br>
+      <b>Universidad Autonoma de Baja California</b><br>
+      Programa de Ingeniero en software y tecnologias emergentes <br>
+      Patrones de diseño<br>
+      <hr>
+    </div>
+
     <h1>{{title}}</h1>
+
+
+    {% for authors in author %}
+    {{authors}} <br />
+    {% endfor %}
+
+    <br>
+    <b>{{date}}</b>
   </div>
 
   <div class="blank-page"></div>
   <div class="blank-page"></div>
   <div class="blank-page"></div>
 
-  {{date}} <br />
+
   {{title}} <br />
 
-  {% for authors in author %}
-  {{authors}} <br />
-  {% endfor %}
+
   <br />
 
   <article>
     {{content}}
   </article>
 
-  <footer>
-    ewq
-  </footer>
 </body>
 
 </html>
